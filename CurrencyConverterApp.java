@@ -12,6 +12,16 @@ class CurrencyConverter {
     }
 
 
+    // Method to convert currency
+    public double convert(String fromCurrency, String toCurrency, double amount) {
+        if (!exchangeRates.containsKey(fromCurrency) || !exchangeRates.containsKey(toCurrency)) {
+            throw new IllegalArgumentException("Invalid currency code!");
+        }
+        double baseAmount = amount / exchangeRates.get(fromCurrency);
+        return baseAmount * exchangeRates.get(toCurrency);
+    }
+}
+
 // Main class
 public class CurrencyConverterApp {
     public static void main(String[] args) {
